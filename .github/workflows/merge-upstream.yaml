@@ -1,0 +1,22 @@
+name: Sync with Upstream
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Sync Upstream Repository
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: "dev-shimada/GoStubby"
+          source_branch: "main"
+          exclude: ".github/**"
+          destination_branch: "upstream-sync"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
