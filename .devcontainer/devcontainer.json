@@ -5,6 +5,10 @@
         "dockerfile": "Dockerfile",
         "target": "vscode"
     },
+    "runArgs": [
+		"--env-file",
+		".devcontainer/.env"
+	],
     "workspaceFolder": "/workspace",
     "customizations": {
         "vscode": {
